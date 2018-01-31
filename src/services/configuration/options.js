@@ -1,6 +1,10 @@
-import {Group, Page, EnableOption, SelectOption} from 'neon-extension-framework/services/configuration/models';
+import {
+    Group, Page,
+    EnableOption,
+    PasswordOption,
+    SelectOption
+} from 'neon-extension-framework/services/configuration/models';
 
-import AuthenticationOption from './models/authentication';
 import Plugin from '../../core/plugin';
 
 
@@ -14,9 +18,11 @@ export default [
             contentScripts: true
         }),
 
-        new AuthenticationOption(Plugin, 'authorization', 'Authentication', {
-            requires: ['enabled']
-        }),
+        new Group(Plugin, 'authorization', 'Authentication', [
+            new PasswordOption(Plugin, 'token', 'Token', {
+                requires: ['enabled']
+            })
+        ]),
 
         new Group(Plugin, 'scrobble', 'Scrobble', [
             new EnableOption(Plugin, 'enabled', 'Enabled', {

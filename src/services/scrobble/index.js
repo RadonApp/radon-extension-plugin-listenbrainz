@@ -16,18 +16,24 @@ export class Scrobble extends ScrobbleService {
     }
 
     onStarted(session) {
-        let request = this._buildRequest(session.item);
+        let listen = this._createListen(session.item);
 
-        if(request === null) {
-            console.warn('Unable to build request for session:', session);
+        if(IsNil(listen)) {
+            console.warn('Unable to build listen for session:', session);
             return;
         }
 
         // Update now playing status
-        Client['track'].updateNowPlaying(request).then((response) => {
-            console.info('TODO: Handle "updateNowPlaying" response:', response);
+        Client.submitListens('playing_now', [listen]).then((response) => {
+            console.info(
+                'TODO: Handle "submitListens" (playing_now) response: %o',
+                response
+            );
         }, (body, statusCode) => {
-            console.info('TODO: Handle "updateNowPlaying" error, status code: %o, body: %O', statusCode, body);
+            console.info(
+                'TODO: Handle "submitListens" (playing_now) error, status code: %o, body: %O',
+                statusCode, body
+            );
         });
     }
 
@@ -36,51 +42,55 @@ export class Scrobble extends ScrobbleService {
             return;
         }
 
+        let listen = this._createListen(session.item);
+
+        if(IsNil(listen)) {
+            console.warn('Unable to build listen for session:', session);
+            return;
+        }
+
+        // Set `listened_at` timestamp
+        listen['listened_at'] = Math.round(Date.now() / 1000);
+
         // Scrobble track
-        this._scrobble(session).then((response) => {
-            console.info('TODO: Handle "scrobble" response:', response);
+        Client.submitListens('single', [listen]).then((response) => {
+            console.info(
+                'TODO: Handle "submitListens" (single) response: %o',
+                response
+            );
         }, (body, statusCode) => {
-            console.info('TODO: Handle "scrobble" error, status code: %o, body: %O', statusCode, body);
+            console.info(
+                'TODO: Handle "submitListens" (single) error, status code: %o, body: %O',
+                statusCode, body
+            );
         });
     }
 
     // region Private methods
 
-    _scrobble(session) {
-        let request = this._buildRequest(session.item);
 
-        if(request === null) {
-            return Promise.reject(new Error('Unable to build request for session: ' + session));
-        }
-
-        // Set `item` timestamp
-        request.timestamp = Math.round(Date.now() / 1000);
-
-        // Scrobble track
-        return Client['track'].scrobble([request]);
-    }
-
-    _buildRequest(track) {
+    _createListen(track) {
         if(track.type !== MediaTypes.Music.Track) {
             return null;
         }
 
         let request = {
-            artist: track.artist.title,
-            album: track.album.title,
-            track: track.title,
-
-            duration: track.duration / 1000
+            'track_metadata': {
+                'artist_name': track.artist.title,
+                'release_name': track.album.title,
+                'track_name': track.title
+            }
         };
 
-        // Track Number
+        // Additional attributes
+        let additional = {};
+
         if(!IsNil(track.number)) {
-            request.trackNumber = track.number;
+            additional['tracknumber'] = track.number;
         }
 
-        // Album Artist
-        if(!IsNil(track.album.artist.title) && track.album.artist.title !== track.artist.title) {
-            request.albumArtist = track.album.artist.title;
+        if(Object.keys(additional).length > 0) {
+            request['additional_info'] = additional;
         }
 
         return request;
