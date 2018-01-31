@@ -1,8 +1,8 @@
 import {
     Group, Page,
     EnableOption,
-    PasswordOption,
-    SelectOption
+    SelectOption,
+    TextOption
 } from 'neon-extension-framework/services/configuration/models';
 
 import Plugin from '../../core/plugin';
@@ -19,7 +19,12 @@ export default [
         }),
 
         new Group(Plugin, 'authorization', 'Authentication', [
-            new PasswordOption(Plugin, 'token', 'Token', {
+            new TextOption(Plugin, 'token', 'Token', {
+                cleanValue: (value) => value.trim(),
+
+                length: 36,
+                pattern: '[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}',
+
                 requires: ['enabled']
             })
         ]),
