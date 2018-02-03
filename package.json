@@ -40,10 +40,8 @@
     "eslint-plugin-react": "^6.3.0"
   },
   "peerDependencies": {
-    "crypto-js": "^3.1.6",
     "lodash-es": "^4.16.1",
     "neon-extension-framework": "^1.6.0",
-    "querystring-es3": "^0.2.1",
-    "uuid": "^2.0.3"
+    "querystring-es3": "^0.2.1"
   }
 }
