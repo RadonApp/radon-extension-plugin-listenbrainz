@@ -11,16 +11,10 @@
     "destination/scrobble",
     "destination/sync"
   ],
-  "web_accessible_resources": [
-    "destination/listenbrainz/callback/callback.html"
-  ],
 
   "webpack": {
     "babel": [
       "node_modules/@fuzeman/listenbrainz/src"
-    ],
-    "chunks": [
-      "callback"
     ]
   }
 }
