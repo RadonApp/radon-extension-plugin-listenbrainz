@@ -90,7 +90,7 @@ export class Scrobble extends ScrobbleService {
         }
 
         if(Object.keys(additional).length > 0) {
-            request['additional_info'] = additional;
+            request['track_metadata']['additional_info'] = additional;
         }
 
         return request;
