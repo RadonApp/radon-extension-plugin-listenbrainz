@@ -13,7 +13,7 @@ function configure() {
 }
 
 // Configure client on session changes
-Plugin.storage.context('authorization').onChanged('token', configure);
+Plugin.preferences.context('authorization').onChanged('token', configure);
 
 // Initial client configuration
 configure();
