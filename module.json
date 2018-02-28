@@ -8,8 +8,7 @@
   "services": [
     "configuration",
 
-    "destination/scrobble",
-    "destination/sync"
+    "destination/scrobble"
   ],
 
   "webpack": {
