@@ -5,6 +5,7 @@ import ScrobbleService from 'neon-extension-framework/services/destination/scrob
 import {MediaTypes} from 'neon-extension-framework/core/enums';
 
 import Client from '../../core/client';
+import Log from '../../core/logger';
 import Plugin from '../../core/plugin';
 
 
@@ -19,18 +20,18 @@ export class Scrobble extends ScrobbleService {
         let listen = this._createListen(session.item);
 
         if(IsNil(listen)) {
-            console.warn('Unable to build listen for session:', session);
+            Log.warn('Unable to build listen for session:', session);
             return;
         }
 
         // Update now playing status
         Client.submitListens('playing_now', [listen]).then((response) => {
-            console.info(
+            Log.info(
                 'TODO: Handle "submitListens" (playing_now) response: %o',
                 response
             );
         }, (body, statusCode) => {
-            console.info(
+            Log.info(
                 'TODO: Handle "submitListens" (playing_now) error, status code: %o, body: %O',
                 statusCode, body
             );
@@ -45,7 +46,7 @@ export class Scrobble extends ScrobbleService {
         let listen = this._createListen(session.item);
 
         if(IsNil(listen)) {
-            console.warn('Unable to build listen for session:', session);
+            Log.warn('Unable to build listen for session:', session);
             return;
         }
 
@@ -54,12 +55,12 @@ export class Scrobble extends ScrobbleService {
 
         // Scrobble track
         Client.submitListens('single', [listen]).then((response) => {
-            console.info(
+            Log.info(
                 'TODO: Handle "submitListens" (single) response: %o',
                 response
             );
         }, (body, statusCode) => {
-            console.info(
+            Log.info(
                 'TODO: Handle "submitListens" (single) error, status code: %o, body: %O',
                 statusCode, body
             );
