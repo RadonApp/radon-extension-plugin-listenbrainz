@@ -42,6 +42,6 @@
   "peerDependencies": {
     "lodash-es": "^4.16.1",
     "neon-extension-framework": "^1.7.2",
-    "querystring-es3": "^0.2.1"
+    "querystring": "^0.2.0"
   }
 }
