@@ -1,0 +1,13 @@
+{
+  "authorization": {
+    "title": "Authorization",
+
+    "token": {
+      "label": "Token"
+    }
+  },
+
+  "scrobble": {
+    "title": "Scrobble"
+  }
+}

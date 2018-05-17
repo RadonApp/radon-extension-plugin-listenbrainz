@@ -4,8 +4,8 @@ import Plugin from '../../core/plugin';
 
 
 export default [
-    new Page(Plugin, null, Plugin.title, [
-        new EnableOption(Plugin, 'enabled', 'Enabled', {
+    new Page(Plugin, null, [
+        new EnableOption(Plugin, 'enabled', {
             default: false,
 
             type: 'plugin',
@@ -13,8 +13,8 @@ export default [
             contentScripts: true
         }),
 
-        new Group(Plugin, 'authorization', 'Authentication', [
-            new TextOption(Plugin, 'token', 'Token', {
+        new Group(Plugin, 'authorization', [
+            new TextOption(Plugin, 'token', {
                 cleanValue: (value) => value.trim(),
 
                 length: 36,
@@ -24,8 +24,8 @@ export default [
             })
         ]),
 
-        new Group(Plugin, 'scrobble', 'Scrobble', [
-            new EnableOption(Plugin, 'enabled', 'Enabled', {
+        new Group(Plugin, 'scrobble', [
+            new EnableOption(Plugin, 'enabled', {
                 default: true,
                 requires: ['enabled'],
 
