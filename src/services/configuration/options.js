@@ -15,7 +15,7 @@ export default [
 
         new Group(Plugin, 'authorization', [
             new TextOption(Plugin, 'token', {
-                cleanValue: (value) => value.trim(),
+                cleanValue: (value) => value && value.trim(),
 
                 length: 36,
                 pattern: '[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}',
