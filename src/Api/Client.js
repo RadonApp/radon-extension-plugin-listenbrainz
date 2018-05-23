@@ -1,6 +1,6 @@
 import {Client as ListenBrainz} from '@fuzeman/listenbrainz/src/index';
 
-import Plugin from './plugin';
+import Plugin from '../Core/Plugin';
 
 
 const Client = new ListenBrainz();

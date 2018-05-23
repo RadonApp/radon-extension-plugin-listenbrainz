@@ -1,6 +1,6 @@
-import {Group, Page, EnableOption, TextOption} from 'neon-extension-framework/services/configuration/models';
-
-import Plugin from '../../core/plugin';
+import {Group, Page} from 'neon-extension-framework/Models/Configuration';
+import {EnableOption, TextOption} from 'neon-extension-framework/Models/Configuration/Options';
+import Plugin from 'neon-extension-destination-listenbrainz/Core/Plugin';
 
 
 export default [
