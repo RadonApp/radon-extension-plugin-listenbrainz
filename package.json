@@ -1,6 +1,6 @@
 {
   "name": "neon-extension-destination-listenbrainz",
-  "version": "1.9.0-beta.5",
+  "version": "1.9.0",
   "description": "Neon Extension: ListenBrainz",
   "keywords": [
     "neon",
@@ -38,7 +38,7 @@
   },
   "peerDependencies": {
     "lodash-es": "^4.16.1",
-    "neon-extension-framework": "^1.9.0-beta.5",
+    "neon-extension-framework": "^1.9.0",
     "querystring": "^0.2.0"
   },
   "scripts": {
