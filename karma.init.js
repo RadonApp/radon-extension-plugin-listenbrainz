@@ -8,8 +8,5 @@ function importAll(r) {
 
 // Import source directories
 importAll(require.context('./Api', true, /.js$/));
-importAll(require.context('./Callback', true, /.js$/));
-importAll(require.context('./Components', true, /.js$/));
 importAll(require.context('./Core', true, /.js$/));
-importAll(require.context('./Models', true, /.js$/));
 importAll(require.context('./Services', true, /.js$/));
