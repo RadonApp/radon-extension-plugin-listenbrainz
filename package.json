@@ -1,7 +1,7 @@
 {
   "name": "neon-extension-destination-listenbrainz",
   "version": "2.0.0-beta.3",
-  "description": "Neon Extension: ListenBrainz",
+  "description": "Radon Extension: ListenBrainz",
   "keywords": [
     "neon",
     "neon-extension",
