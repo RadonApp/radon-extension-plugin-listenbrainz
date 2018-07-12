@@ -3,7 +3,7 @@ node_js:
 - '7'
 before_install:
 - npm install -g npm@'^5.10.0'
-- npm install -g NeApp/neon-extension-build#$TRAVIS_BRANCH || npm install -g NeApp/neon-extension-build#develop
+- npm install -g RadonApp/radon-extension-build#$TRAVIS_BRANCH || npm install -g RadonApp/radon-extension-build#develop
 install:
 - neb travis:install $TRAVIS_BRANCH
 - neb package:validate
@@ -21,5 +21,5 @@ deploy:
   api_key:
     secure: M7ZDk0c2TGHLEr19q4jm3su3FKusqqHywMYTg0L1DSJyD8xiZ1/9JqxCArrnSXoY18kGDrG3RusG5ABi1kk0GqFstXHxQbpjzIaHc7hBOGfD2VJGjmUcJNhUfYf6LmiC24jfYy23PoatDE3rmuKoGQIG79Oxy0ZaXB/quI5miu6K3229Fcji2oqMvtvkQHgBTpeJQT7H/3n98U3SqpjXIu8Qy2grjEyP6QjWBYJtlA0dC0Z9aR2iA85BvPD/xlygKfnCl91WLi07QJCi8kifZm6oyz0cDoR1e/hihyimwx/76tMAQQZ+aSjIJRMuhGWA8mNZUbLlE0SVvj6vTcDHw07RXmtM8Yg5GasVTGShw+6jwhhF4OR9SNhuV3rZw/qntDjZ9yMwpLvb8WU297bf+jE6bcBSBtwh8Rbo81jlmtOpQli9klTgJvl+P6OddItJA9vZvUDgjEN9to7wRf1R0Z+WpeD5QLWFTPwamgf8aGSevKwBLIp6zNdKe7lVgUMBVaSQsVqAbJnpqyNOC2qk+hDukthLSdmRs16AIaPpYwLbjqRNZ3PKdDkKXtaKsexrZOdjNguQG4SjJVdeuhnULX+mODNeXy+glwpYbf8jEViryjWidgKf67lvePrr+JKxJPjhG6MpLMpM7hy31RI4+gsJ/WLqCcWqoUy1AurYxmo=
   on:
-    repo: NeApp/neon-extension-destination-listenbrainz
+    repo: RadonApp/radon-extension-plugin-listenbrainz
     tags: true

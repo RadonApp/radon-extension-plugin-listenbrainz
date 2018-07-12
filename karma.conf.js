@@ -6,7 +6,7 @@ var webpack = require('webpack');
 
 let libraries = [
     fs.realpathSync(path.resolve(__dirname, 'node_modules/@fuzeman/listenbrainz/src')),
-    fs.realpathSync(path.resolve(__dirname, 'node_modules/neon-extension-framework')),
+    fs.realpathSync(path.resolve(__dirname, 'node_modules/@radon-extension/framework')),
     fs.realpathSync(path.resolve(__dirname, 'node_modules/lodash-es'))
 ];
 
@@ -119,11 +119,11 @@ module.exports = function(config) {
 
             resolve: {
                 alias: {
-                    'neon-extension-framework': fs.realpathSync(
-                        path.resolve(__dirname, 'node_modules/neon-extension-framework')
+                    '@radon-extension/framework': fs.realpathSync(
+                        path.resolve(__dirname, 'node_modules/@radon-extension/framework')
                     ),
 
-                    'neon-extension-core': fs.realpathSync(__dirname),
+                    '@radon-extension/core': fs.realpathSync(__dirname),
 
                     // Dependencies
                     'lodash': 'lodash-es',
