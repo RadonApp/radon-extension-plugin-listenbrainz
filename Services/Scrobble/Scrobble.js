@@ -75,13 +75,22 @@ export class Scrobble extends ScrobbleService {
             return null;
         }
 
+        // Ensure duration is defined (to avoid invalid items)
+        if(IsNil(track.duration)) {
+            return null;
+        }
+
+        // Build request
         let request = {
             'track_metadata': {
                 'artist_name': track.artist.title,
-                'release_name': track.album.title,
                 'track_name': track.title
             }
         };
+
+        if(!IsNil(track.album) && !IsNil(track.album.title)) {
+            request['track_metadata']['release_name'] = track.album.title;
+        }
 
         // Additional attributes
         let additional = {};
